@@ -1,5 +1,6 @@
 ﻿using System;
 using Tabuleiro;
+using ChessGame.Entities;
 
 namespace ChessGame
 {
@@ -7,9 +8,11 @@ namespace ChessGame
     {
         static void Main(string[] args)
         {
-            Posicao p = new Posicao(3,4);
+            GameBoard tab = new GameBoard(8, 8);
 
-            Console.WriteLine(p);
+            Tela.imprimirTabuleiro(tab);
+            
+            
         }
     }
 }

@@ -7,9 +7,9 @@ namespace Tabuleiro
         public Posicao Position { get; set; }
         public Cor Color { get; protected set; }
         public int AmountMoviment { get; set; }
-        public Tabuleiro Tab { get; protected set; }
+        public GameBoard Tab { get; protected set; }
 
-        public Peca (Posicao position, Tabuleiro tab, Cor color)
+        public Peca (Posicao position, GameBoard tab, Cor color)
         {
             Position = position;
             Tab = tab;
