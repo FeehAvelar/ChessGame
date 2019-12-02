@@ -1,4 +1,6 @@
-﻿namespace Tabuleiro
+﻿using ChessGame.Entities.Exceptions;
+
+namespace Tabuleiro
 {
     class GameBoard
     {
@@ -19,10 +21,33 @@
             return pecas[linha, coluna];
         }
 
+        public Peca PegaPeca(Posicao pos)
+        {
+            return pecas[pos.Linha, pos.Coluna];
+        }
+
+        public bool ExistePeca (Posicao pos)
+        {
+            PositionValid(pos);
+
+            return PegaPeca(pos) != null;
+        }
         public void colocarPeca(Peca p, Posicao pos)
         {
+            if (ExistePeca(pos))
+            {
+                throw new GameBoardException("Position is occuped!");
+            }
             pecas[pos.Linha, pos.Coluna] = p;
             p.Position = pos;
+        }
+
+        public void PositionValid (Posicao pos)
+        {
+            if (pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
+            {
+                throw new GameBoardException("Position is invalid!");
+            }
         }
     }
 }
