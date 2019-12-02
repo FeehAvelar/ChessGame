@@ -9,15 +9,13 @@ namespace Tabuleiro
         public int AmountMoviment { get; set; }
         public GameBoard Tab { get; protected set; }
 
-        public Peca (Posicao position, GameBoard tab, Cor color)
+        public Peca (GameBoard tab, Cor color)
         {
-            Position = position;
+            Position = null;
             Tab = tab;
             Color = color;
             AmountMoviment = 0;
         }
-
-        public abstract void Mover(Posicao newPosition);
-
+                
     }
 }
