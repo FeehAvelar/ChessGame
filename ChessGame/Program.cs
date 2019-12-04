@@ -10,22 +10,7 @@ namespace ChessGame
     {
         static void Main(string[] args)
         {
-            try
-            {
-                GameBoard tab = new GameBoard(8, 8);
-                tab.colocarPeca(new Rook(tab, Cor.Black), new Posicao(0, 0));
-                tab.colocarPeca(new Rook(tab, Cor.Black), new Posicao(1, 3));
-                tab.colocarPeca(new King(tab, Cor.Black), new Posicao(0, 2));
-                Tela.imprimirTabuleiro(tab);
-            }
-            catch (GameBoardException e)
-            {
-                Console.WriteLine("Chess game error: " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
+            PosicaoXadrez pos = new PosicaoXadrez('A', 1);
         }
     }
 }
