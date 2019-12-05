@@ -16,6 +16,11 @@ namespace Tabuleiro
             Color = color;
             AmountMoviment = 0;
         }
+
+        public void IncrementMoviment()
+        {
+            AmountMoviment++;
+        }
                 
     }
 }

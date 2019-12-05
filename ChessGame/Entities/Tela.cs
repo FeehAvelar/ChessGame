@@ -1,11 +1,12 @@
 ﻿using System;
 using Tabuleiro;
+using JogoXadrez;
 
 namespace ChessGame.Entities
 {
     class Tela
     {
-        public static void imprimirTabuleiro (GameBoard tab)
+        public static void ImprimirTabuleiro (GameBoard tab)
         {
             for (int i = 0; i < tab.Linhas; i++)
             {
@@ -26,6 +27,14 @@ namespace ChessGame.Entities
             }
             Console.WriteLine("    ^ ^ ^ ^ ^ ^ ^ ^");
             Console.WriteLine("    A B C D E F G H");
+        }
+
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            int linha = int.Parse(s[1] + "");
+            char coluna = s[0];            
+            return new PosicaoXadrez(coluna, linha);
         }
 
         public static void ImprimirPeca(Peca peca)

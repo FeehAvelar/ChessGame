@@ -12,11 +12,24 @@ namespace ChessGame
         {
             try
             {
-                GameBoard tab = new GameBoard(8, 8);
-                tab.colocarPeca(new Rook(tab, Cor.Black), new Posicao(0, 0));
-                tab.colocarPeca(new Rook(tab, Cor.Black), new Posicao(1, 3));
-                tab.colocarPeca(new King(tab, Cor.Black), new Posicao(0, 2));
-                Tela.imprimirTabuleiro(tab);
+                PartidaXadrez partida = new PartidaXadrez();
+
+                while (!partida.Terminada)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Tela.ImprimirTabuleiro(partida.Tab);
+
+                    Console.Write("Digtie a origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().ConvertPosition();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().ConvertPosition();
+
+                    partida.ExecutaMovimento(origem, destino);
+                }
+
+
+
             }
             catch (GameBoardException e)
             {
