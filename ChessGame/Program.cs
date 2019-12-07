@@ -20,16 +20,20 @@ namespace ChessGame
                     Console.WriteLine();
                     Tela.ImprimirTabuleiro(partida.Tab);
 
-                    Console.Write("Digtie a origem: ");
+                    Console.Write("\nDigtie a origem: ");
                     Posicao origem = Tela.LerPosicaoXadrez().ConvertPosition();
-                    Console.Write("Destino: ");
+
+                    Console.Clear();
+                    bool[,] posicoesPossiveis = partida.Tab.PegaPeca(origem).MovimentosPossiveis();
+
+                    Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+                    
+
+                    Console.Write("\nDestino: ");
                     Posicao destino = Tela.LerPosicaoXadrez().ConvertPosition();
 
                     partida.ExecutaMovimento(origem, destino);
                 }
-
-
-
             }
             catch (GameBoardException e)
             {

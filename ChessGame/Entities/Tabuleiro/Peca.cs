@@ -21,6 +21,13 @@ namespace Tabuleiro
         {
             AmountMoviment++;
         }
-                
+
+        protected bool PodeMover(Posicao pos)
+        {
+            Peca p = Tab.PegaPeca(pos);
+            return p == null || p.Color != this.Color;
+        }
+
+        abstract public bool[,] MovimentosPossiveis();        
     }
 }

@@ -61,5 +61,14 @@ namespace Tabuleiro
                 throw new GameBoardException("Position is invalid!");
             }
         }
+
+        public bool PosicaoValida (Posicao pos)
+        {
+            if (pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

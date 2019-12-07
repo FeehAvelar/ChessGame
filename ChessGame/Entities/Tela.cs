@@ -13,20 +13,42 @@ namespace ChessGame.Entities
                 Console.Write(8 - i+" > ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (tab.PegaPeca(i,j) == null)
-                    {
-                        Console.Write("- ");
-                    }
-                    else
-                    {
-                        Tela.ImprimirPeca(tab.PegaPeca(i, j));
-                        Console.Write(" ");
-                    }                    
+                    ImprimirPeca(tab.PegaPeca(i, j));
+                    Console.Write(" ");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("    ^ ^ ^ ^ ^ ^ ^ ^");
-            Console.WriteLine("    A B C D E F G H");
+            Console.WriteLine("    ^  ^  ^  ^  ^  ^  ^  ^");
+            Console.WriteLine("    A  B  C  D  E  F  G  H");
+        }
+
+        public static void ImprimirTabuleiro (GameBoard tab, bool[,] posicoesPossiveis)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
+
+            for (int i = 0; i < tab.Linhas; i++)
+            {
+                Console.Write(8 - i + " > ");
+                for (int j = 0; j < tab.Colunas; j++)
+                {
+                    if (posicoesPossiveis[i,j])
+                    {
+                        Console.BackgroundColor = fundoAlterado;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = fundoOriginal;
+                    }
+                    ImprimirPeca(tab.PegaPeca(i, j));
+                    Console.Write(" ");
+                    Console.BackgroundColor = fundoOriginal;
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("    ^  ^  ^  ^  ^  ^  ^  ^");
+            Console.WriteLine("    A  B  C  D  E  F  G  H");
+
         }
 
         public static PosicaoXadrez LerPosicaoXadrez()
@@ -39,16 +61,24 @@ namespace ChessGame.Entities
 
         public static void ImprimirPeca(Peca peca)
         {
-            if (peca.Color == Cor.White)
+            if (peca == null)
             {
-                Console.Write(peca);
+                Console.Write("- ");
             }
             else
             {
-                ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(peca);
-                Console.ForegroundColor = aux;
+                if (peca.Color == Cor.White)
+                {
+                    Console.Write(peca);
+                }
+                else
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(peca);
+                    Console.ForegroundColor = aux;
+                }
+                Console.Write(" ");
             }
         }
     }
