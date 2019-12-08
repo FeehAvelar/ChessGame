@@ -22,6 +22,11 @@ namespace Tabuleiro
             AmountMoviment++;
         }
 
+        public void DecrementMoviment()
+        {
+            AmountMoviment--;
+        }
+
         protected bool PodeMover(Posicao pos)
         {
             Peca p = Tab.PegaPeca(pos);

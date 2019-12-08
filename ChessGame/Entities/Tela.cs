@@ -14,6 +14,11 @@ namespace ChessGame.Entities
             Console.WriteLine();
             Console.WriteLine("\nTurno {0}", partida.Turno);
             Console.WriteLine($"Aguardando jogador: {partida.JogadorAtual}");
+
+            if (partida.Xeque)
+            {
+                Console.WriteLine("XEQUE!!");
+            }
         }
 
         public static void ImprimirPecasCapturadas(PartidaXadrez partida)
