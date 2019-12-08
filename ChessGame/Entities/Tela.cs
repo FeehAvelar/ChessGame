@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Tabuleiro;
 using JogoXadrez;
 
@@ -6,6 +7,38 @@ namespace ChessGame.Entities
 {
     class Tela
     {
+        public static void ImprimirPartida(PartidaXadrez partida)
+        {
+            ImprimirTabuleiro(partida.Tab);
+            ImprimirPecasCapturadas(partida);
+            Console.WriteLine();
+            Console.WriteLine("\nTurno {0}", partida.Turno);
+            Console.WriteLine($"Aguardando jogador: {partida.JogadorAtual}");
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaXadrez partida)
+        {
+            Console.WriteLine("Peças capturadas:");
+            Console.Write("Brancas: ");
+            ImprimirConjuntos(partida.PecaCapturadas(Cor.White));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            ImprimirConjuntos(partida.PecaCapturadas(Cor.Black));
+            Console.ForegroundColor = aux;
+        }
+
+        public static void ImprimirConjuntos (HashSet<Peca> hash)
+        {
+            Console.Write("[");
+            foreach (Peca p in hash)
+            {
+                Console.Write(p + " ");
+            }
+            Console.Write("]");
+        }
+
         public static void ImprimirTabuleiro (GameBoard tab)
         {
             for (int i = 0; i < tab.Linhas; i++)
@@ -80,6 +113,7 @@ namespace ChessGame.Entities
                 }
                 Console.Write(" ");
             }
+
         }
     }
 }

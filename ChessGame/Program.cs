@@ -17,10 +17,10 @@ namespace ChessGame
                 while (!partida.Terminada)
                 {
                     Console.Clear();
+                    Tela.ImprimirPartida(partida);
+
                     Console.WriteLine();
-                    Tela.ImprimirTabuleiro(partida.Tab);
-                    Console.WriteLine("\nTurno {0}",partida.Turno);
-                    Console.WriteLine($"Aguardando jogado: {partida.JogadorAtual}");
+
 
                     Console.Write("\nDigtie a origem: ");
                     Posicao origem = Tela.LerPosicaoXadrez().ConvertPosition();
