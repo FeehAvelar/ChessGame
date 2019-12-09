@@ -144,7 +144,7 @@ namespace JogoXadrez
         {
             if (origem == destino)
                 throw new GameBoardException("A peça tem que ser movida");
-            if (!Tab.PegaPeca(origem).PodeMoverPara(destino))
+            if (!Tab.PegaPeca(origem).MovimentoPossivel(destino))
             {
                 throw new GameBoardException("Posição de destino inválida");
             }
