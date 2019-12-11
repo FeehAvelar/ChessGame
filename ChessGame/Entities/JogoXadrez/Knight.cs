@@ -39,7 +39,7 @@ namespace JogoXadrez
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            pos.DefinirValores(Position.Linha - 1, Position.Coluna + 2);
+            pos.DefinirValores(Position.Linha + 1, Position.Coluna + 2);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
