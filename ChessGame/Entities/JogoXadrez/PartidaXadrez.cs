@@ -235,11 +235,27 @@ namespace JogoXadrez
         public void RealizaJogada (Posicao origem, Posicao destino)
         {
             Peca pecaCapturada = ExecutaMovimento(origem, destino);
+            Peca p = Tab.PegaPeca(destino);
+
             if (EstaXeque(JogadorAtual))
             {
                 DesfazMovimento(origem, destino, pecaCapturada);
                 throw new GameBoardException("Você não pode se colocar em xeque!");
             }
+            //#JogadaEspecial Promocao
+            if (p is Pawn)
+            {
+                if ((p.Color == Cor.White && destino.Linha == 0) || (p.Color == Cor.Black && destino.Linha == 7))
+                {
+                    p = Tab.retirarPeca(destino);
+                    Pecas.Remove(p);
+                    Peca queen = new Queen(Tab, p.Color);
+                    Tab.ColocarPeca(queen, destino);
+
+                    Pecas.Add(queen);
+                }
+            }
+
             if (EstaXeque(Adversaria(JogadorAtual)))
             {
                 Xeque = true;
@@ -260,7 +276,6 @@ namespace JogoXadrez
             }
 
             //#JogadaEspecial EnPassant
-            Peca p = Tab.PegaPeca(destino);
             if (p is Pawn && (origem.Linha + 2 == destino.Linha || origem.Linha - 2 == destino.Linha))
             {
                 VuneravelEnPassant = p;                
