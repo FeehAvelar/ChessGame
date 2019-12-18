@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-
 using Tabuleiro;
 using ChessGame.Entities.Exceptions;
+using Entities.Enums;
 
 namespace JogoXadrez
 {

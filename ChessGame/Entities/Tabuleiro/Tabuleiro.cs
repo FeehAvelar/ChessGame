@@ -28,7 +28,10 @@ namespace Tabuleiro
 
         public bool ExistePeca (Posicao pos)
         {
-            PositionValid(pos);
+            if (!PosicaoValida(pos))
+            {
+                throw new GameBoardException("Position is invalid!");
+            }
 
             return PegaPeca(pos) != null;
         }
@@ -48,18 +51,11 @@ namespace Tabuleiro
             {
                 return null;
             }
+
             Peca aux = PegaPeca(pos);
             aux.Position = null;
             pecas[pos.Linha, pos.Coluna] = null;
             return aux;
-        }
-
-        public void PositionValid (Posicao pos)
-        {
-            if (pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
-            {
-                throw new GameBoardException("Position is invalid!");
-            }
         }
 
         public bool PosicaoValida (Posicao pos)

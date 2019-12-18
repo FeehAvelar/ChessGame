@@ -1,4 +1,5 @@
 ﻿using Tabuleiro;
+using Entities.Enums;
 
 namespace Tabuleiro
 {

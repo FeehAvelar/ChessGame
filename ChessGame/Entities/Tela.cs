@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Tabuleiro;
 using JogoXadrez;
+using Entities.Enums;
 
 namespace ChessGame.Entities
 {
@@ -57,7 +58,7 @@ namespace ChessGame.Entities
         {
             for (int i = 0; i < tab.Linhas; i++)
             {
-                Console.Write(8 - i+" > ");
+                Console.Write(8 - i+" > ");// ->
                 for (int j = 0; j < tab.Colunas; j++)
                 {
                     ImprimirPeca(tab.PegaPeca(i, j));
@@ -65,6 +66,7 @@ namespace ChessGame.Entities
                 }
                 Console.WriteLine();
             }
+
             Console.WriteLine("    ^  ^  ^  ^  ^  ^  ^  ^");
             Console.WriteLine("    A  B  C  D  E  F  G  H");
         }

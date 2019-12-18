@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Tabuleiro;
+﻿using Tabuleiro;
+using Entities.Enums;
 
 namespace JogoXadrez
 {
